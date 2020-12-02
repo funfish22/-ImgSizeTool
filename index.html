@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圖片尺寸調整工具</title>
+    <link rel="stylesheet" href="dist/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="title">圖片尺寸調整工具</h1>
+        </div>
+    </header>
+    <main>
+        <section class="main_header">
+            <div class="container">
+                <form class="flex" id="main_form">
+                    <div class="main_header_block">
+                        <h2 class="main_header__title">上傳圖片</h2>
+                        <div id="main_header_img" class="main_header_img"></div>
+                        <input id="ActualImg" type="file" class="main_header__input" accept="image/gif, image/jpeg, image/png">
+                    </div>
+                    <div class="main_header_block">
+                        <h2 class="main_header__title">圖片資訊</h2>
+                        <label class="infoInput">
+                            <p class="infoInput__title">站點ID</p>
+                            <input type="number" class="infoInput__input" id="infoID">
+                        </label>
+                    </div>
+                    <div class="main_header_block--small">
+                        <h2 class="main_header__title">功能</h2>
+                        <button id="resizeButton" class="button button--primary" type="button">執行圖片縮放</button>
+                        <button id="resetButton" class="button button--danger" onclick="resetRender()">重置</button>
+                        <button id="downloadButton" class="button button--primary m-t-auto" type="button">打包下載</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section class="main_body">
+            <div class="container">
+                <div class="flex flex-wrap" id="imgCard"></div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>ALL RIGHTS RESERVED. DESIGNED BY Aga Lin</p>
+    </footer>
+    <script src="js/hermite.js"></script>
+    <script src="js/jszip.js"></script>
+    <script src="js/FileSaver.js"></script>
+    <script src="js/bundle.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
