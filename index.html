@@ -19,7 +19,10 @@
                     <div class="main_header_block">
                         <h2 class="main_header__title">上傳圖片</h2>
                         <div id="main_header_img" class="main_header_img"></div>
-                        <input id="ActualImg" type="file" class="main_header__input" accept="image/gif, image/jpeg, image/png">
+                        <div>
+                            <input id="ActualImg" type="file" class="main_header__input" accept="image/gif, image/jpeg, image/png">
+                            <span id="fileName"></span>
+                        </div>
                     </div>
                     <div class="main_header_block">
                         <h2 class="main_header__title">圖片資訊</h2>
@@ -41,6 +44,9 @@
             <div class="container">
                 <div class="flex flex-wrap" id="imgCard"></div>
             </div>
+        </section>
+        <section class="upload" id="uploadRoot">
+            <div class="upload__content">檔案上傳</div>
         </section>
     </main>
     <footer class="footer">

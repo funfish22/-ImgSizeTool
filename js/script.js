@@ -4,7 +4,9 @@ var infoID = document.getElementById('infoID');
 var imgCard = document.getElementById('imgCard');
 var mainImg = document.getElementById("main_header_img");
 var mainForm = document.getElementById("main_form");
+var fileName = document.getElementById("fileName");
 var downloadButton = document.getElementById("downloadButton");
+var uploadRoot = document.getElementById("uploadRoot");
 
 var imgDom = ''
 var imgSize = [192, 180, 144, 128, 120, 96];
@@ -26,6 +28,7 @@ function readURL(input) {
             img.setAttribute("id", "orig_img")
             mainImg.appendChild(img);
         }
+        fileName.textContent = input.files[0].name
         reader.readAsDataURL(input.files[0]);
     }
 };
@@ -69,7 +72,6 @@ function renderImg(orig_src) {
                 </div>
             `
         }
-        
     }
     imgCard.innerHTML = imgDom;
 
@@ -77,7 +79,6 @@ function renderImg(orig_src) {
         var resizeImg = document.getElementById(`resizeImg${i+1}`);
         resizeImage(imgSize[i] , imgSize[i], orig_src, resizeImg)
     }
-    
 }
 
 function resizeImage(width, height, orig_src, resizeImg) {
@@ -117,6 +118,36 @@ function downloadZip() {
     });
 };
 
+function onDragEnter(e) {
+    e.stopPropagation(); //終止事件冒泡
+    e.preventDefault();  //終止預設行為
+    uploadRoot.classList.add('upload--active')
+}
+
+function onDragOver(e) {
+    e.stopPropagation(); //終止事件冒泡
+    e.preventDefault();  //終止預設行為
+    return false;
+}
+
+function onDragLeave() {
+    uploadRoot.classList.remove('upload--active')
+    return false;
+}
+
+function onDrop(e) {
+    e.stopPropagation(); //終止事件冒泡
+    e.preventDefault();  //終止預設行為
+    var files = e.dataTransfer;
+    readURL(files)
+    uploadRoot.classList.remove('upload--active')
+}
+
 ActualImg.addEventListener('change', uploadImg);
 resizeButton.addEventListener('click', OrigImg);
 downloadButton.addEventListener('click', downloadZip);
+
+window.addEventListener("dragenter", onDragEnter);
+window.addEventListener('dragover', onDragOver);;
+uploadRoot.addEventListener("dragleave", onDragLeave);
+window.addEventListener("drop", onDrop);
